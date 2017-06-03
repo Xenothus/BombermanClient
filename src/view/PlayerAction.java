@@ -21,8 +21,6 @@ public class PlayerAction extends AbstractAction
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        //TODO wypada zamienic przesylanie na jedynie bajtowe - nawet lepiej bo latwiej i szybciej
         ClientCommandsSenderThread.getInstance().sendToServer(command);
-        System.out.println("HELLO");
     }
 }
