@@ -1,32 +1,39 @@
 package client;
 
-import client.Auxiliary.Queue;
+import client.Auxiliary.Command;
+import client.Auxiliary.CommandQueue;
 
 import java.io.*;
 import java.net.*;
 
 import static client.Config.*;
 
-public class ClientOrdersSenderThread implements Runnable {
+public class ClientCommandsSenderThread implements Runnable {
 
     private static class SingletonHelper {
-        private static final ClientOrdersSenderThread instance = new ClientOrdersSenderThread();
+        private static final ClientCommandsSenderThread instance = new ClientCommandsSenderThread();
     }
 
-    private Queue orderQueue;
+    private CommandQueue commands;
     private int portUDP;
 
-    private ClientOrdersSenderThread()
+    private ClientCommandsSenderThread()
     {
-        orderQueue = new Queue();
+        commands = new CommandQueue();
 
         //Testing
-        orderQueue.push("New order");
+/*        orderQueue.push("New order");
         orderQueue.push("Hello");
-        orderQueue.push("New hello");
+        orderQueue.push("New hello");*/
+
+//        byte one = 2;
+//        commands.push(new Command(one));
+//        commands.push(new Command(one));
+//        commands.push(new Command(one));
+        //test was successful
     }
 
-    public static ClientOrdersSenderThread getInstance()
+    public static ClientCommandsSenderThread getInstance()
     {
         return SingletonHelper.instance;
     }
@@ -44,13 +51,13 @@ public class ClientOrdersSenderThread implements Runnable {
 
             while (true)    //TODO (in distant future) end this loop properly
             {
-                if (orderQueue.isEmpty())
+                if (commands.isEmpty())
                     continue;
 
-                //Sending order message to server
-                String message = orderQueue.pop();
+                //Sending command to server
+                buffer[0] = commands.pop();
                 DatagramPacket dp = new DatagramPacket(
-                        message.getBytes(), message.length(), ip, portUDP);
+                        buffer, BUFFER_SIZE_UDP, ip, portUDP);
                 socket.send(dp);
             }
         }
@@ -60,9 +67,9 @@ public class ClientOrdersSenderThread implements Runnable {
         }
     }
 
-    public void sendToServer(String msg)
+    public void sendToServer(byte command)
     {
-        orderQueue.push(msg);
+        commands.push(new Command(command));
     }
 
     private void connectWithServer()

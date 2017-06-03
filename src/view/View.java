@@ -2,7 +2,7 @@ package view;
 
 import javax.swing.*;
 
-import static Main.Config.*;
+import static main.Config.*;
 
 public class View extends JFrame {
 

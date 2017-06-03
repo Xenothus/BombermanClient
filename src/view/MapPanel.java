@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-import static Main.Config.*;
+import static main.Config.*;
 
 /**
  * Created by Adam on 2017-04-04.

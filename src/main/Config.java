@@ -1,4 +1,4 @@
-package Main;
+package main;
 
 /**
  * Created by Oem on 2017-06-03.

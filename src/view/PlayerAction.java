@@ -3,6 +3,8 @@ package view;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
+import client.ClientCommandsSenderThread;
+
 /**
  * Created by Adam on 2017-04-05.
  */
@@ -20,6 +22,6 @@ public class PlayerAction extends AbstractAction
     public void actionPerformed(ActionEvent e)
     {
         //TODO wypada zamienic przesylanie na jedynie bajtowe - nawet lepiej bo latwiej i szybciej
-        //ClientOrdersSenderThread.getInstance().sendToServer(command);
+        ClientCommandsSenderThread.getInstance().sendToServer(command);
     }
 }
