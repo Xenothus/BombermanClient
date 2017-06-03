@@ -66,7 +66,7 @@ public class MapPanel extends JPanel
 
     public Dimension getPreferredSize()
     {
-        return new Dimension(1350,850);
+        return new Dimension(WIDTH, HEIGHT);
     }
 
     public void paintComponent(Graphics g)
