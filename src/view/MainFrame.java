@@ -2,24 +2,22 @@ package view;
 
 import javax.swing.*;
 
-import java.awt.*;
-
 import static main.Config.*;
 
-public class View extends JFrame {
+public class MainFrame extends JFrame {
 
     private static class SingletonHelper {
-        private static final View instance = new View();
+        private static final MainFrame instance = new MainFrame();
     }
 
     MapPanel map;
 
-    public static View getInstance()
+    public static MainFrame getInstance()
     {
         return SingletonHelper.instance;
     }
 
-    private View()
+    private MainFrame()
     {
         super();
         map = new MapPanel(this);

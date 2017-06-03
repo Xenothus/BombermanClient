@@ -1,6 +1,6 @@
 package client;
 
-import view.View;
+import view.MainFrame;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -44,7 +44,7 @@ public class ClientDataReceiverThread implements Runnable {
                     }
                 }
 
-                View.getInstance().updateMap(array2D);
+                MainFrame.getInstance().updateMap(array2D);
             }
         }
         catch (IOException e)

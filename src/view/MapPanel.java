@@ -16,9 +16,9 @@ public class MapPanel extends JPanel
 {
     BufferedImage backgroundImage, foregroundLeavesImage, worldObjects[];
     BufferedImage[][] tiles;
-    View view;
+    MainFrame view;
 
-    public MapPanel(View view)
+    public MapPanel(MainFrame view)
     {
         super();
         this.view=view;

@@ -1,15 +1,18 @@
 package main;
 
 import client.ClientCommandsSenderThread;
-import view.View;
+import view.MainFrame;
+import view.NetFrame;
 
 public class MainApp {
 
     public static void main (String args[])
     {
-        View.getInstance();
+        new NetFrame();
 
-        new Thread(ClientCommandsSenderThread.getInstance()).start();
+        //MainFrame.getInstance();
+
+        //new Thread(ClientCommandsSenderThread.getInstance()).start();
 
     }
 }
