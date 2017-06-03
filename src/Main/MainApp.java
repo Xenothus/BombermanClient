@@ -1,6 +1,6 @@
 package Main;
 
-import Client.ClientOrdersSenderThread;
+import client.ClientOrdersSenderThread;
 
 public class MainApp {
 

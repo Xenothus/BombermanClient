@@ -8,7 +8,6 @@ import java.io.File;
 import java.io.IOException;
 
 import static Main.Config.*;
-import static view.PlayerAction.*;
 
 /**
  * Created by Adam on 2017-04-04.

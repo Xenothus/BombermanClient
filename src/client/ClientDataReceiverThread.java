@@ -1,16 +1,13 @@
-package Client;
+package client;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.util.Objects;
+
+import static client.Config.*;
 
 public class ClientDataReceiverThread implements Runnable {
-
-    private final static String DEFAULT_SERVER_IP = "127.0.0.1";
-
-    private final static int BUFFER_SIZE_UDP = 1024;
 
     private int portUDP;
 
@@ -26,6 +23,7 @@ public class ClientDataReceiverThread implements Runnable {
         {
             InetAddress ip = InetAddress.getByName(DEFAULT_SERVER_IP);
             byte[] buffer = new byte[BUFFER_SIZE_UDP];
+
             while (true)    //TODO (in distant future) end this loop properly
             {
                 //Receiving data from server

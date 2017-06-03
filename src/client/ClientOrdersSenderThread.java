@@ -1,19 +1,13 @@
-package Client;
+package client;
 
-import Client.Auxiliary.Queue;
+import client.Auxiliary.Queue;
 
 import java.io.*;
 import java.net.*;
-import java.util.Objects;
 
-//Singleton
+import static client.Config.*;
+
 public class ClientOrdersSenderThread implements Runnable {
-
-    private final static String DEFAULT_SERVER_IP = "127.0.0.1";
-    private final static int DEFAULT_SERVER_PORT = 8888;
-
-    private final static int BUFFER_SIZE_UDP = 1024;
-    private final static String DEFAULT_CLIENT_MESSAGE = "Client here";
 
     private static class SingletonHelper {
         private static final ClientOrdersSenderThread instance = new ClientOrdersSenderThread();
@@ -47,6 +41,7 @@ public class ClientOrdersSenderThread implements Runnable {
         {
             InetAddress ip = InetAddress.getByName(DEFAULT_SERVER_IP);
             byte[] buffer = new byte[BUFFER_SIZE_UDP];
+
             while (true)    //TODO (in distant future) end this loop properly
             {
                 if (orderQueue.isEmpty())
@@ -78,8 +73,8 @@ public class ClientOrdersSenderThread implements Runnable {
              DataOutputStream out = new DataOutputStream(
                      new BufferedOutputStream(socket.getOutputStream())))
         {
-            //Sending hello message to server
-            out.writeUTF(DEFAULT_CLIENT_MESSAGE);
+            //Sending IP Address to server
+            out.writeUTF("127.0.0.1");
             out.flush();
 
             //Receiving UDP port value for farther UDP connection
