@@ -30,12 +30,11 @@ public class View extends JFrame {
     {
         setTitle(TITLE);
         setSize(FRAME_WIDTH, FRAME_HEIGHT);
-        //setLayout(new GridLayout());
-        //setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         add(map);
         pack();
+        setResizable(false);
         setVisible(true);
     }
 
