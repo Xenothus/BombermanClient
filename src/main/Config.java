@@ -13,7 +13,7 @@ public class Config {
 
     public final static String NET_FRAME_TITLE = "Please insert data";
     public final static int NET_FRAME_WIDTH = 300;
-    public final static int NET_FRAME_HEIGHT = 100;
+    public final static int NET_FRAME_HEIGHT = 200;
 
     public final static int COLS = 20;
     public final static int ROWS = 15;

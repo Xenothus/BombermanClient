@@ -2,7 +2,9 @@ package client;
 
 import client.auxiliary.Command;
 import client.auxiliary.CommandQueue;
+import view.MainFrame;
 
+import javax.swing.*;
 import java.io.*;
 import java.net.*;
 
@@ -20,17 +22,6 @@ public class ClientCommandsSenderThread implements Runnable {
     private ClientCommandsSenderThread()
     {
         commands = new CommandQueue();
-
-        //Testing
-/*        orderQueue.push("New order");
-        orderQueue.push("Hello");
-        orderQueue.push("New hello");*/
-
-//        byte one = 2;
-//        commands.push(new Command(one));
-//        commands.push(new Command(one));
-//        commands.push(new Command(one));
-        //test was successful
     }
 
     public static ClientCommandsSenderThread getInstance()
@@ -46,7 +37,7 @@ public class ClientCommandsSenderThread implements Runnable {
 
         try (DatagramSocket socket = new DatagramSocket())
         {
-            InetAddress ip = InetAddress.getByName(DEFAULT_SERVER_IP);
+            InetAddress ip = InetAddress.getByName(SERVER_IP);
             byte[] buffer = new byte[BUFFER_SIZE_UDP];
 
             while (true)    //TODO (in distant future) end this loop properly
@@ -74,23 +65,27 @@ public class ClientCommandsSenderThread implements Runnable {
 
     private void connectWithServer()
     {
-        try (Socket socket = new Socket(DEFAULT_SERVER_IP, DEFAULT_SERVER_PORT);
+        try (Socket socket = new Socket(SERVER_IP, SERVER_PORT);
              DataInputStream in = new DataInputStream(
                      new BufferedInputStream(socket.getInputStream()));
              DataOutputStream out = new DataOutputStream(
                      new BufferedOutputStream(socket.getOutputStream())))
         {
             //Sending IP Address to server
-            out.writeUTF("127.0.0.1");
+            out.writeUTF(OWN_IP);
             out.flush();
 
-            //Receiving UDP port value for farther UDP connection
+            //Receiving UDP port value for further UDP connection
             portUDP = Integer.parseInt(in.readUTF());
-            System.out.print(portUDP);
+
+            // Initialization of main view frame
+            MainFrame.getInstance();
         }
         catch (IOException e)
         {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Could not connect to server");
+            //e.printStackTrace();
+            System.exit(1);
         }
     }
 }

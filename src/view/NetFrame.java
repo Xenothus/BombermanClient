@@ -1,12 +1,10 @@
 package view;
 
-import client.ClientCommandsSenderThread;
-
 import javax.swing.*;
-
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
+import client.ClientCommandsSenderThread;
+import client.Config;
 
 import static main.Config.*;
 
@@ -16,6 +14,7 @@ import static main.Config.*;
 public class NetFrame extends JFrame
 {
     private JFormattedTextField ipTextField;
+    private JFormattedTextField ownIpTextField;
     private JFormattedTextField portTextField;
 
     public NetFrame()
@@ -37,20 +36,29 @@ public class NetFrame extends JFrame
 
         c.gridx = 0;
         c.gridy = it++;
-        JLabel ipLabel = new JLabel("IP Address");
+        JLabel ipLabel = new JLabel("Server IP Address");
         container.add(ipLabel, c);
 
         c.gridy = it++;
-        ipTextField = new JFormattedTextField();
+        ipTextField = new JFormattedTextField(Config.SERVER_IP);
         ipTextField.setColumns(20);
         container.add(ipTextField, c);
+
+        c.gridy = it++;
+        JLabel ownIpLabel = new JLabel("Your IP Address");
+        container.add(ownIpLabel, c);
+
+        c.gridy = it++;
+        ownIpTextField = new JFormattedTextField(Config.OWN_IP);
+        ownIpTextField.setColumns(20);
+        container.add(ownIpTextField, c);
 
         c.gridy = it++;
         JLabel portLabel = new JLabel("Port");
         container.add(portLabel, c);
 
         c.gridy = it++;
-        portTextField = new JFormattedTextField();
+        portTextField = new JFormattedTextField(Config.SERVER_PORT);
         portTextField.setColumns(20);
         container.add(portTextField, c);
 
@@ -71,13 +79,14 @@ public class NetFrame extends JFrame
     {
         try
         {
-            String inputIp = ipTextField.getText();
-            String portString = portTextField.getText();
+            String inputServerIp = ipTextField.getText();
+            String inputOwnIp = ipTextField.getText();
+            int port = (int) portTextField.getValue();
 
-            int port;
-            port = Integer.parseInt(portString);
+            Config.SERVER_IP = inputServerIp;
+            Config.OWN_IP = inputOwnIp;
+            Config.SERVER_PORT = port;
 
-            MainFrame.getInstance();
             new Thread((ClientCommandsSenderThread.getInstance())).start();
 
             dispose();
