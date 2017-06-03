@@ -8,8 +8,8 @@ public class Config {
     private Config(){}
 
     public final static String TITLE = "PeaR Bomberman - Early Access";
-    public final static int WIDTH = 1350;
-    public final static int HEIGHT = 850;
+    public final static int FRAME_WIDTH = 1350;
+    public final static int FRAME_HEIGHT = 850;
 
     public final static int COLS = 20;
     public final static int ROWS = 15;

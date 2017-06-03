@@ -25,6 +25,7 @@ public class MapPanel extends JPanel
         tiles=new BufferedImage[COLS][ROWS];
         worldObjects=new BufferedImage[6];
         loadImages();
+        setControls();
     }
 
     void setControls()
@@ -65,7 +66,7 @@ public class MapPanel extends JPanel
 
     public Dimension getPreferredSize()
     {
-        return new Dimension(WIDTH, HEIGHT);
+        return new Dimension(FRAME_WIDTH, FRAME_HEIGHT);
     }
 
     public void paintComponent(Graphics g)

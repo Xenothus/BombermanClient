@@ -12,12 +12,12 @@ public class CommandQueue {
         list = new LinkedList<>();
     }
 
-    public void push(Command com)
+    public synchronized void push(Command com)
     {
         list.add(com);
     }
 
-    public byte pop()
+    public synchronized byte pop()
     {
         byte result = 0;
         if (!list.isEmpty())
@@ -29,7 +29,7 @@ public class CommandQueue {
         return result;
     }
 
-    public boolean isEmpty()
+    public synchronized boolean isEmpty()
     {
         return list.isEmpty();
     }
