@@ -28,12 +28,6 @@ public class ClientDataReceiverThread implements Runnable {
             byte[] buffer = new byte[BUFFER_SIZE_UDP];
             while (true)    //TODO (in distant future) end this loop properly
             {
-                //Sending OK message to server
-                String message = "OK";
-                DatagramPacket dp = new DatagramPacket(
-                        message.getBytes(), message.length(), ip, portUDP);
-                socket.send(dp);
-
                 //Receiving data from server
                 DatagramPacket dps = new DatagramPacket(buffer, BUFFER_SIZE_UDP);
                 socket.receive(dps);

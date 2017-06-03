@@ -41,7 +41,7 @@ public class ClientOrdersSenderThread implements Runnable {
     public void run()
     {
         connectWithServer();
-        //new Thread(new ClientDataReceiverThread(portUDP + 1)).start();
+        new Thread(new ClientDataReceiverThread(portUDP + 1)).start();
 
         try (DatagramSocket socket = new DatagramSocket())
         {
@@ -57,14 +57,6 @@ public class ClientOrdersSenderThread implements Runnable {
                 DatagramPacket dp = new DatagramPacket(
                         message.getBytes(), message.length(), ip, portUDP);
                 socket.send(dp);
-
-                //Receiving server OK response
-                DatagramPacket dps = new DatagramPacket(buffer, BUFFER_SIZE_UDP);
-                socket.receive(dps);
-                String receivedOrder = new String(dps.getData(), 0, dps.getLength());
-                //if (Objects.equals(receivedOrder, "OK"))    //For future
-                 //   continue;
-                System.out.println(receivedOrder);
             }
         }
         catch (IOException e)
