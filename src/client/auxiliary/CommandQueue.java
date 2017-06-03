@@ -1,4 +1,4 @@
-package client.Auxiliary;
+package client.auxiliary;
 
 import java.util.LinkedList;
 import java.util.List;

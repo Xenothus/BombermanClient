@@ -1,7 +1,7 @@
 package client;
 
-import client.Auxiliary.Command;
-import client.Auxiliary.CommandQueue;
+import client.auxiliary.Command;
+import client.auxiliary.CommandQueue;
 
 import java.io.*;
 import java.net.*;
