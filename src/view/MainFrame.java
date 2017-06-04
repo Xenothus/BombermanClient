@@ -10,7 +10,7 @@ public class MainFrame extends JFrame {
         private static final MainFrame instance = new MainFrame();
     }
 
-    MapPanel map;
+    private MapPanel map;
 
     public static MainFrame getInstance()
     {
@@ -20,7 +20,7 @@ public class MainFrame extends JFrame {
     private MainFrame()
     {
         super();
-        map = new MapPanel(this);
+        map = new MapPanel();
         initGUI();
     }
 

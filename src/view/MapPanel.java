@@ -17,7 +17,7 @@ public class MapPanel extends JPanel
     private BufferedImage backgroundImage, foregroundLeavesImage, worldObjects[];
     private BufferedImage[][] tiles;
 
-    public MapPanel(MainFrame view)
+    public MapPanel()
     {
         super();
         tiles = new BufferedImage[COLS][ROWS];
@@ -48,7 +48,8 @@ public class MapPanel extends JPanel
 
     private void loadImages()
     {
-        try {
+        try
+        {
             backgroundImage = ImageIO.read(new File("Grafika\\tloPlanszy.png"));
             foregroundLeavesImage = ImageIO.read(new File("Grafika\\ramkaPlanszy.png"));
 
@@ -74,7 +75,10 @@ public class MapPanel extends JPanel
             worldObjects[BOMBERMEN_ON_BOMB[2]] = ImageIO.read(new File("Grafika\\andrzejNaBombie.png"));
             worldObjects[BOMBERMEN_ON_BOMB[3]] = ImageIO.read(new File("Grafika\\patrykNaBombie.png"));
         }
-        catch (IOException e){System.out.print(e.getMessage());}
+        catch (IOException e)
+        {
+            System.out.print(e.getMessage());
+        }
     }
 
     @Override
