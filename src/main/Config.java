@@ -22,6 +22,8 @@ public class Config {
     public final static int TOP_PADDING = 50;
     public final static int LEFT_PADDING = 300;
 
+    public final static int BLOCKS_TYPE_COUNT = 11;
+
     public final static byte CLEAR = 0;
     public final static byte BOMB = 1;
     public final static byte FLAME = 2;
@@ -29,6 +31,10 @@ public class Config {
     public final static byte BRICK = 4;
     public final static byte BOMBERMAN = 5;
     public final static byte BOMBERMAN_ON_BOMB = 6;
+    public final static byte EXTRA_BOMB = 7;
+    public final static byte WOOD_WITH_EXTRA_BOMB = 8;
+    public final static byte EXTRA_GUNPOWDER = 9;
+    public final static byte WOOD_WITH_EXTRA_GUNPOWDER = 10;
 
     public final static byte MOVE_UP = 1;
     public final static byte MOVE_DOWN = 2;
