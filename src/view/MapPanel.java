@@ -23,7 +23,7 @@ public class MapPanel extends JPanel
         super();
         this.view=view;
         tiles=new BufferedImage[COLS][ROWS];
-        worldObjects=new BufferedImage[6];
+        worldObjects=new BufferedImage[7];
         loadImages();
         setControls();
     }
@@ -59,7 +59,7 @@ public class MapPanel extends JPanel
             worldObjects[BOMBERMAN] = ImageIO.read(new File("Grafika\\postac.png"));
             worldObjects[WOOD] = ImageIO.read(new File("Grafika\\plot.png"));
             worldObjects[BRICK] = ImageIO.read(new File("Grafika\\mur.png"));
-
+            worldObjects[BOMBERMAN_ON_BOMB] = ImageIO.read(new File("Grafika\\plot.png"));
         }
         catch (IOException e){System.out.print(e.getMessage());}
     }

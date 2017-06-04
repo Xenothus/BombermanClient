@@ -44,6 +44,8 @@ public class ClientDataReceiverThread implements Runnable {
                     }
                 }
 
+                //Mozna odciazyc przesyl wstawiajac mape do jakiejs kolejki
+                //z ktorej bedzie czytac wykonywacz update mapss
                 MainFrame.getInstance().updateMap(array2D);
             }
         }
