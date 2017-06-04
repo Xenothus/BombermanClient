@@ -51,17 +51,28 @@ public class MapPanel extends JPanel
         try {
             backgroundImage = ImageIO.read(new File("Grafika\\tloPlanszy.png"));
             foregroundLeavesImage = ImageIO.read(new File("Grafika\\ramkaPlanszy.png"));
+
             worldObjects[CLEAR] = null;
             worldObjects[BOMB] = ImageIO.read(new File("Grafika\\bomba.png"));
             worldObjects[FLAME] = ImageIO.read(new File("Grafika\\wybuch.png"));
-            worldObjects[BOMBERMAN] = ImageIO.read(new File("Grafika\\postac.png"));
             worldObjects[WOOD] = ImageIO.read(new File("Grafika\\plot.png"));
             worldObjects[BRICK] = ImageIO.read(new File("Grafika\\mur.png"));
-            worldObjects[BOMBERMAN_ON_BOMB] = ImageIO.read(new File("Grafika\\plot.png"));
+
+            worldObjects[EXTRA_BOMB] = ImageIO.read(new File("Grafika\\dodatkowaBomba.png"));
             worldObjects[WOOD_WITH_EXTRA_BOMB] = ImageIO.read(new File("Grafika\\plot.png"));
-            worldObjects[EXTRA_BOMB] = ImageIO.read(new File("Grafika\\bomba.png"));
+
+            worldObjects[EXTRA_GUNPOWDER] = ImageIO.read(new File("Grafika\\proch.png"));
             worldObjects[WOOD_WITH_EXTRA_GUNPOWDER] = ImageIO.read(new File("Grafika\\plot.png"));
-            worldObjects[EXTRA_GUNPOWDER] = ImageIO.read(new File("Grafika\\bomba.png"));
+
+            worldObjects[BOMBERMEN[0]] = ImageIO.read(new File("Grafika\\kasia.png"));
+            worldObjects[BOMBERMEN[1]] = ImageIO.read(new File("Grafika\\lukasz.png"));
+            worldObjects[BOMBERMEN[2]] = ImageIO.read(new File("Grafika\\andrzej.png"));
+            worldObjects[BOMBERMEN[3]] = ImageIO.read(new File("Grafika\\patryk.png"));
+
+            worldObjects[BOMBERMEN_ON_BOMB[0]] = ImageIO.read(new File("Grafika\\kasiaNaBombie.png"));
+            worldObjects[BOMBERMEN_ON_BOMB[1]] = ImageIO.read(new File("Grafika\\lukaszNaBombie.png"));
+            worldObjects[BOMBERMEN_ON_BOMB[2]] = ImageIO.read(new File("Grafika\\andrzejNaBombie.png"));
+            worldObjects[BOMBERMEN_ON_BOMB[3]] = ImageIO.read(new File("Grafika\\patrykNaBombie.png"));
         }
         catch (IOException e){System.out.print(e.getMessage());}
     }
