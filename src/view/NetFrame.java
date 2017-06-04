@@ -13,7 +13,7 @@ import static main.Config.*;
  */
 public class NetFrame extends JFrame
 {
-    private JFormattedTextField ipTextField;
+    private JFormattedTextField serverIpTextField;
     private JFormattedTextField ownIpTextField;
     private JFormattedTextField portTextField;
 
@@ -40,9 +40,9 @@ public class NetFrame extends JFrame
         container.add(ipLabel, c);
 
         c.gridy = it++;
-        ipTextField = new JFormattedTextField(Config.SERVER_IP);
-        ipTextField.setColumns(20);
-        container.add(ipTextField, c);
+        serverIpTextField = new JFormattedTextField(Config.SERVER_IP);
+        serverIpTextField.setColumns(20);
+        container.add(serverIpTextField, c);
 
         c.gridy = it++;
         JLabel ownIpLabel = new JLabel("Your IP Address");
@@ -79,8 +79,8 @@ public class NetFrame extends JFrame
     {
         try
         {
-            String inputServerIp = ipTextField.getText();
-            String inputOwnIp = ipTextField.getText();
+            String inputServerIp = serverIpTextField.getText();
+            String inputOwnIp = ownIpTextField.getText();
             int port = (int) portTextField.getValue();
 
             Config.SERVER_IP = inputServerIp;
