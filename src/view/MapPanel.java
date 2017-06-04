@@ -14,16 +14,14 @@ import static main.Config.*;
  */
 public class MapPanel extends JPanel
 {
-    BufferedImage backgroundImage, foregroundLeavesImage, worldObjects[];
-    BufferedImage[][] tiles;
-    MainFrame view;
+    private BufferedImage backgroundImage, foregroundLeavesImage, worldObjects[];
+    private BufferedImage[][] tiles;
 
     public MapPanel(MainFrame view)
     {
         super();
-        this.view=view;
-        tiles=new BufferedImage[COLS][ROWS];
-        worldObjects=new BufferedImage[BLOCKS_TYPE_COUNT];
+        tiles = new BufferedImage[COLS][ROWS];
+        worldObjects = new BufferedImage[BLOCKS_TYPE_COUNT];
         loadImages();
         setControls();
     }
@@ -68,27 +66,32 @@ public class MapPanel extends JPanel
         catch (IOException e){System.out.print(e.getMessage());}
     }
 
+    @Override
     public Dimension getPreferredSize()
     {
         return new Dimension(FRAME_WIDTH, FRAME_HEIGHT);
     }
 
+    @Override
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
 
         g.drawImage(backgroundImage,0,0,null);
-        for(int i=0;i<COLS;i++)
-            for(int j=0;j<ROWS;j++)
-                if(tiles[i][j]!=null)
-                    g.drawImage(tiles[i][j],i*TILE_SIZE+LEFT_PADDING,j*TILE_SIZE+TOP_PADDING,null);
-        g.drawImage(foregroundLeavesImage,0,0,null);
+        for(int i = 0; i < COLS; i++)
+            for(int j = 0; j < ROWS; j++)
+                if(tiles[i][j] != null)
+                    g.drawImage(tiles[i][j],
+                            i * TILE_SIZE+LEFT_PADDING,
+                            j * TILE_SIZE+TOP_PADDING,
+                            null);
+        g.drawImage(foregroundLeavesImage, 0, 0, null);
     }
 
     public void update(byte[][] viewModel)
     {
-        for(int i=0; i<COLS; i++)
-            for (int j=0; j<ROWS;j++) {
+        for(int i = 0; i < COLS; i++)
+            for (int j = 0; j < ROWS; j++) {
                 BufferedImage tile=worldObjects[viewModel[i][j]];
                 tiles[i][j] = tile;
             }
