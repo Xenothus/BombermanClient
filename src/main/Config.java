@@ -13,7 +13,7 @@ public class Config {
 
     public final static String NET_FRAME_TITLE = "Please insert data";
     public final static int NET_FRAME_WIDTH = 300;
-    public final static int NET_FRAME_HEIGHT = 200;
+    public final static int NET_FRAME_HEIGHT = 250;
 
     public final static int COLS = 20;
     public final static int ROWS = 15;
@@ -21,7 +21,7 @@ public class Config {
     public final static int TILE_SIZE = 50;
     public final static int TOP_PADDING = 50;
     public final static int LEFT_PADDING = 300;
-    
+
     public final static int BLOCKS_TYPE_COUNT = 17;
 
     public final static byte CLEAR = 0;
@@ -41,4 +41,11 @@ public class Config {
     public final static byte MOVE_LEFT = 2;
     public final static byte MOVE_RIGHT = 3;
     public final static byte PLANT_BOMB = 4;
+
+    public final static String[] PLAYER_NAMES = {
+            "Kasia",
+            "Lukasz",
+            "Andrzej",
+            "Patryk"
+    };
 }

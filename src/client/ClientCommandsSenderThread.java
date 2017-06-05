@@ -7,6 +7,7 @@ import view.MainFrame;
 import javax.swing.*;
 import java.io.*;
 import java.net.*;
+import java.util.Objects;
 
 import static client.Config.*;
 
@@ -71,12 +72,17 @@ public class ClientCommandsSenderThread implements Runnable {
              DataOutputStream out = new DataOutputStream(
                      new BufferedOutputStream(socket.getOutputStream())))
         {
-            //Sending IP Address to server
-            out.writeUTF(OWN_IP);
+            //Sending IP Address and player character selection to server
+            out.writeUTF(OWN_IP + "-" + SELECTED_PLAYER);
             out.flush();
 
             //Receiving UDP port value for further UDP connection
-            portUDP = Integer.parseInt(in.readUTF());
+            //or denial msg
+            String received = in.readUTF();
+            if (Objects.equals(received, PLAYER_TAKEN_MSG))
+                throw new Exception("Player character taken");
+
+            portUDP = Integer.parseInt(received);
 
             // Initialization of main view frame
             MainFrame.getInstance();
@@ -84,7 +90,11 @@ public class ClientCommandsSenderThread implements Runnable {
         catch (IOException e)
         {
             JOptionPane.showMessageDialog(null, "Could not connect to server");
-            //e.printStackTrace();
+            System.exit(1);
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
             System.exit(1);
         }
     }

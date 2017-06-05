@@ -16,6 +16,7 @@ public class NetFrame extends JFrame
     private JFormattedTextField serverIpTextField;
     private JFormattedTextField ownIpTextField;
     private JFormattedTextField portTextField;
+    private JComboBox playersComboBox;
 
     public NetFrame()
     {
@@ -33,6 +34,14 @@ public class NetFrame extends JFrame
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.HORIZONTAL;
         int it = 0;
+
+        c.gridy = it++;
+        JLabel playerLabel = new JLabel("Player");
+        container.add(playerLabel, c);
+
+        c.gridy = it++;
+        playersComboBox = new JComboBox(PLAYER_NAMES);
+        container.add(playersComboBox, c);
 
         c.gridx = 0;
         c.gridy = it++;
@@ -79,13 +88,10 @@ public class NetFrame extends JFrame
     {
         try
         {
-            String inputServerIp = serverIpTextField.getText();
-            String inputOwnIp = ownIpTextField.getText();
-            int port = (int) portTextField.getValue();
-
-            Config.SERVER_IP = inputServerIp;
-            Config.OWN_IP = inputOwnIp;
-            Config.SERVER_PORT = port;
+            Config.SERVER_IP = serverIpTextField.getText();
+            Config.OWN_IP = ownIpTextField.getText();
+            Config.SERVER_PORT = (int) portTextField.getValue();
+            Config.SELECTED_PLAYER = playersComboBox.getSelectedIndex();
 
             new Thread((ClientCommandsSenderThread.getInstance())).start();
 

@@ -11,4 +11,8 @@ public class Config
     public static String OWN_IP = "127.0.0.1";
     public static int SERVER_PORT = 8888;
     static int BUFFER_SIZE_UDP = 1024;
+
+    public static int SELECTED_PLAYER = 0;
+
+    public static String PLAYER_TAKEN_MSG = "PN";
 }
