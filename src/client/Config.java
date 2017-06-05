@@ -18,7 +18,7 @@ public class Config
     public final static byte DISCONNECT_COMMAND = (byte) 255;
 
     // Default server message for player taken refusal
-    public final static String PLAYER_TAKEN_MSG = "PN";
+    final static String PLAYER_TAKEN_MSG = "PN";
 
     // Player character selection (assigned value is initial for net frame's text box)
     public static int SELECTED_PLAYER = 0;
