@@ -2,13 +2,8 @@ package view;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-
-import client.ClientCommandsSenderThread;
 import client.CommandQueue;
 
-/**
- * Created by Adam on 2017-04-05.
- */
 public class PlayerAction extends AbstractAction
 {
     byte command;

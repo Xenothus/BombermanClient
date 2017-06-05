@@ -1,12 +1,10 @@
 package client;
 
-import view.MainFrame;
-
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-
+import view.MainFrame;
 import static client.Config.*;
 import static main.Config.*;
 

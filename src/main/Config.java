@@ -7,21 +7,26 @@ public class Config {
 
     private Config(){}
 
+    // Main frame
     public final static String TITLE = "PeaR Bomberman - Early Access";
     public final static int FRAME_WIDTH = 1350;
     public final static int FRAME_HEIGHT = 850;
 
+    // Net frame
     public final static String NET_FRAME_TITLE = "Please insert data";
     public final static int NET_FRAME_WIDTH = 300;
     public final static int NET_FRAME_HEIGHT = 250;
 
-    public final static int COLS = 20;
-    public final static int ROWS = 15;
-
+    // Map panel
     public final static int TILE_SIZE = 50;
     public final static int TOP_PADDING = 50;
     public final static int LEFT_PADDING = 300;
 
+    // World's dimensions
+    public final static int COLS = 20;
+    public final static int ROWS = 15;
+
+    // Block types
     public final static int BLOCKS_TYPE_COUNT = 17;
 
     public final static byte CLEAR = 0;
@@ -36,16 +41,18 @@ public class Config {
     public final static byte[] BOMBERMEN = {9, 10, 11, 12};
     public final static byte[] BOMBERMEN_ON_BOMB = {13, 14, 15, 16};
 
-    public final static byte MOVE_UP = 0;
-    public final static byte MOVE_DOWN = 1;
-    public final static byte MOVE_LEFT = 2;
-    public final static byte MOVE_RIGHT = 3;
-    public final static byte PLANT_BOMB = 4;
-
+    // Players' names
     public final static String[] PLAYER_NAMES = {
             "Kasia",
             "Lukasz",
             "Andrzej",
             "Patryk"
     };
+
+    // Player actions
+    public final static byte MOVE_UP = 0;
+    public final static byte MOVE_DOWN = 1;
+    public final static byte MOVE_LEFT = 2;
+    public final static byte MOVE_RIGHT = 3;
+    public final static byte PLANT_BOMB = 4;
 }

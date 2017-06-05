@@ -1,12 +1,9 @@
 package view;
 
-import client.CommandQueue;
-
 import javax.swing.*;
-
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
+import client.CommandQueue;
 import static main.Config.*;
 import static client.Config.DISCONNECT_COMMAND;
 

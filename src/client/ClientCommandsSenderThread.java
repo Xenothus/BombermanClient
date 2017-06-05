@@ -1,12 +1,10 @@
 package client;
 
-import view.MainFrame;
-
 import javax.swing.*;
 import java.io.*;
 import java.net.*;
 import java.util.Objects;
-
+import view.MainFrame;
 import static client.Config.*;
 
 public class ClientCommandsSenderThread implements Runnable {

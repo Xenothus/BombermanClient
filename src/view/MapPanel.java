@@ -6,12 +6,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import static main.Config.*;
 
-/**
- * Created by Adam on 2017-04-04.
- */
 public class MapPanel extends JPanel
 {
     private BufferedImage backgroundImage, foregroundLeavesImage, worldObjects[];

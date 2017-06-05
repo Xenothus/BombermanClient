@@ -2,15 +2,10 @@ package view;
 
 import javax.swing.*;
 import java.awt.*;
-
 import client.ClientCommandsSenderThread;
 import client.Config;
-
 import static main.Config.*;
 
-/**
- * Created by Oem on 2017-06-03.
- */
 public class NetFrame extends JFrame
 {
     private JFormattedTextField serverIpTextField;
