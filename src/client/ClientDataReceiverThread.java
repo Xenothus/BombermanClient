@@ -12,6 +12,7 @@ import static main.Config.*;
 
 public class ClientDataReceiverThread implements Runnable {
 
+    private final ConnectionInfo connectionInfo = ConnectionInfo.getInstance();
     private int portUDP;
 
     public ClientDataReceiverThread(int portUDP)
@@ -27,7 +28,7 @@ public class ClientDataReceiverThread implements Runnable {
             InetAddress ip = InetAddress.getByName(SERVER_IP);
             byte[] buffer = new byte[BUFFER_SIZE_UDP];
 
-            while (true)    //TODO (in distant future) end this loop properly
+            while (connectionInfo.isConnected())
             {
                 //Receiving data from server
                 DatagramPacket dps = new DatagramPacket(buffer, BUFFER_SIZE_UDP);

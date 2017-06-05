@@ -15,4 +15,6 @@ public class Config
     public static int SELECTED_PLAYER = 0;
 
     public static String PLAYER_TAKEN_MSG = "PN";
+
+    public static byte DISCONNECT_COMMAND = (byte) 255;
 }

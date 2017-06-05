@@ -93,7 +93,7 @@ public class NetFrame extends JFrame
             Config.SERVER_PORT = (int) portTextField.getValue();
             Config.SELECTED_PLAYER = playersComboBox.getSelectedIndex();
 
-            new Thread((ClientCommandsSenderThread.getInstance())).start();
+            new Thread(new ClientCommandsSenderThread()).start();
 
             dispose();
         }

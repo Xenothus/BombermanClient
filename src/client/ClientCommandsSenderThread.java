@@ -1,7 +1,5 @@
 package client;
 
-import client.auxiliary.Command;
-import client.auxiliary.CommandQueue;
 import view.MainFrame;
 
 import javax.swing.*;
@@ -13,21 +11,15 @@ import static client.Config.*;
 
 public class ClientCommandsSenderThread implements Runnable {
 
-    private static class SingletonHelper {
-        private static final ClientCommandsSenderThread instance = new ClientCommandsSenderThread();
-    }
-
-    private CommandQueue commands;
+    private final CommandQueue commands = CommandQueue.getInstance();
+    private final ConnectionInfo connectionInfo = ConnectionInfo.getInstance();
     private int portUDP;
 
-    private ClientCommandsSenderThread()
-    {
-        commands = new CommandQueue();
-    }
+    private boolean isConnected;
 
-    public static ClientCommandsSenderThread getInstance()
+    public ClientCommandsSenderThread()
     {
-        return SingletonHelper.instance;
+        isConnected = true;
     }
 
     @Override
@@ -41,13 +33,20 @@ public class ClientCommandsSenderThread implements Runnable {
             InetAddress ip = InetAddress.getByName(SERVER_IP);
             byte[] buffer = new byte[BUFFER_SIZE_UDP];
 
-            while (true)    //TODO (in distant future) end this loop properly
+            while (isConnected)
             {
                 if (commands.isEmpty())
                     continue;
 
+                byte commandToSend = commands.pop();
+                if (commandToSend == DISCONNECT_COMMAND)
+                {
+                    isConnected = false;
+                    connectionInfo.disconnect();
+                }
+
                 //Sending command to server
-                buffer[0] = commands.pop();
+                buffer[0] = commandToSend;
                 DatagramPacket dp = new DatagramPacket(
                         buffer, BUFFER_SIZE_UDP, ip, portUDP);
                 socket.send(dp);
@@ -57,11 +56,6 @@ public class ClientCommandsSenderThread implements Runnable {
         {
             e.printStackTrace();
         }
-    }
-
-    public void sendToServer(byte command)
-    {
-        commands.push(new Command(command));
     }
 
     private void connectWithServer()
